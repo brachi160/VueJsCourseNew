@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function getReq() {
+            fetch("https://restcountries.eu/rest/v2/all?fields=name")
+                .then(res => res.json())
+                .then(rand => {
+                    x = Math.floor(Math.random() * 249 + 1);
+                    return rand[x].name;
+                })
+                .then((Country) => { setw(Country) });
+        }
+        function setw(countryName) {
+            fetch("https://restcountries.eu/rest/v2/name/" + countryName)
+            .then(res2 => res2.json())
+            .then((r) => display(r));
+        }
+        function display(res){
+            let str=`country name: ${res[0].name}
+            <br>
+                    country flag: <img src='${res[0].flag}' style="width:100px; height: 50px"/>`;
+            let contentDiv=document.getElementById("country").innerHTML=str;
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <button onclick="getReq()">getReq</button>
+    <div id="country"></div>
+</body>
+
+</html>
