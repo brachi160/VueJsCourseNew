@@ -19,8 +19,9 @@
         }
         function display(res){
             let str=`country name: ${res[0].name}
-            <br>
-                    country flag: <img src='${res[0].flag}' style="width:100px; height: 50px"/>`;
+            <br><br> country flag: <img src='${res[0].flag}' style="width:100px; height: 50px"/>
+            <br><br>
+            ${JSON.stringify(res)}`;
             let contentDiv=document.getElementById("country").innerHTML=str;
         }
 
